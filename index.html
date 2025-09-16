@@ -98,9 +98,32 @@ const roster = [
   {name:'Ghost', role:'Owner', img:'images/zen.jpg', bio:'Click on me.'}
 ];
 
+function loadRoster(){
+  const rowDiv = document.createElement('div');
+  rowDiv.className = 'row';
+
+  roster.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'flip-card';
+    card.innerHTML = `
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="${m.img}" onerror="this.style.display='none'">
+          <span>${m.name}</span>
+          <div class="role">${m.role}</div>
+        </div>
+        <div class="flip-card-back">${m.bio}</div>
+      </div>`;
+    rowDiv.appendChild(card);
+  });
+
+  document.getElementById('rows-container').appendChild(rowDiv);
+}
+
 loadRoster();
 </script>
 </body>
 </html>
+
 
 

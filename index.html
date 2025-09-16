@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="images/osiiiz_....ico" type="image/x-icon">
-<title>@2n9 Roster</title>
+<title>robbed.homes</title>
 <style>
 html, body {
   margin:0; padding:0;
@@ -94,65 +94,13 @@ h1 { text-align:center; margin-bottom:20px; }
 
 <script>
 const roster = [
-  {name:'@2n9Hanako', role:'Owner / Founder', img:'images/nasa.jpg', bio:'Click on me.', profile:'profiles/@2n9Hanako.html'},
-  {name:'@2n9Zen', role:'Owner', img:'images/zen.jpg', bio:'Click on me.', profile:'profiles/@2n9Zen.html'}
+  {name:'PlugJamie', role:'Owner / Founder', img:'images/nasa.jpg', bio:'Click on me.'},
+  {name:'Ghost', role:'Owner', img:'images/zen.jpg', bio:'Click on me.'}
 ];
-
-// Generate 2x1 layout (2 rows, 1 card per row)
-function loadRoster(){
-  const rowsContainer=document.getElementById('rows-container');
-  roster.forEach(m=>{
-    const rowDiv=document.createElement('div');
-    rowDiv.className='row';
-    const card=document.createElement('div');
-    card.className='flip-card';
-    card.innerHTML=`<div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="${m.img}">
-        <span>${m.name}</span>
-        <div class="role">${m.role}</div>
-      </div>
-      <div class="flip-card-back">${m.bio}</div>
-    </div>`;
-    card.onclick=()=>{ window.location.href=m.profile; }
-    rowDiv.appendChild(card);
-    rowsContainer.appendChild(rowDiv);
-  });
-}
 
 loadRoster();
 </script>
 </body>
 </html>
 
-playBtn.onclick=()=>music.paused?music.play():music.pause();
-prevBtn.onclick=()=>skipSong(-1);
-nextBtn.onclick=()=>skipSong(1);
-shuffleBtn.onclick=()=>{isShuffle=!isShuffle; shuffleBtn.classList.toggle('active');};
-loopBtn.onclick=()=>{isLoop=!isLoop; loopBtn.classList.toggle('active');};
-
-music.ontimeupdate=()=>{ if(!isNaN(music.duration)) progressBar.style.width=(music.currentTime/music.duration)*100+'%'; }
-music.onended=()=>{ if(isLoop){ music.currentTime=0; music.play(); } else { skipSong(1); } }
-
-function skipSong(dir){
-    if(isShuffle){
-        let next; do{ next=Math.floor(Math.random()*songs.length);}while(next===currentIndex);
-        currentIndex=next;
-    }else{ currentIndex=(currentIndex+dir+songs.length)%songs.length; }
-    loadSong();
-    music.play().catch(()=>{});
-}
-
-// Cursor sparkles
-document.addEventListener('mousemove', e=>{
-    const sparkle=document.createElement('div');
-    sparkle.className='sparkle';
-    sparkle.style.left=e.pageX+'px';
-    sparkle.style.top=e.pageY+'px';
-    document.body.appendChild(sparkle);
-    setTimeout(()=>{ sparkle.remove(); },500);
-});
-</script>
-</body>
-</html>
 
